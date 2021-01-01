@@ -5,6 +5,11 @@ POSITIVE = 'חיובי'
 NEGATIVE = 'שלילי'
 RESULT = 'corona_result'
 
+# Gives a number of  and negative to COVID individuals
+
+NUMBER_OF_POSITIVE_WHO_TESTED = data_frame[data_frame[RESULT] == POSITIVE].shape[0]
+NUMBER_OF_NEGATIVE_WHO_TESTED = data_frame[data_frame[RESULT] == NEGATIVE].shape[0]
+
 
 # --------------Maybe usefull for further research ----
 
@@ -49,9 +54,7 @@ def negative_corona_per_cough():
 
 
 def cough_as_indicator():
-    # Gives a number of positive to COVID individuals
-    number_of_positive_who_tested = data_frame[data_frame[RESULT] == POSITIVE].shape[0]
-    number_of_negative_who_tested = data_frame[data_frame[RESULT] == NEGATIVE].shape[0]
+    print('\n Q3 - Cough as indicator \n')
 
     # Extracting the amount of people with covid and have cough
     positive_corona_cough_data_frame = data_frame[data_frame[RESULT] == POSITIVE].groupby('cough')['cough'].count()
@@ -73,9 +76,47 @@ def cough_as_indicator():
     print("%.2f" % cough_as_indicator_in_negative_covid + " %")
 
     if cough_as_indicator_in_positive_covid > 70.0 and cough_as_indicator_in_negative_covid <= 30.0:
-        print("Cough is a good indicator for COVID-19")
+        print("Only cough is a good indicator for COVID-19")
     else:
-        print("Cough is not a good indicator for COVID-19")
+        print("Only cough is not a good indicator for COVID-19")
 
 
-cough_as_indicator()
+def positive_corona_per_fever():
+    print("Number of positive to Covid-19 people by fever")
+    print(data_frame[data_frame[RESULT] == POSITIVE].groupby('fever')['fever'].count())
+
+
+def negative_corona_per_fever():
+    print("Number of negative to Covid-19 people by fever")
+    print(data_frame[data_frame[RESULT] == NEGATIVE].groupby('fever')['fever'].count())
+
+
+def fever_as_indicator():
+    print('\n Q3 - Fever as indicator \n')
+
+    # Extracting the amount of people with covid and have cough
+    positive_corona_fever_data_frame = data_frame[data_frame[RESULT] == POSITIVE].groupby('fever')['fever'].count()
+    positive_with_fever = positive_corona_fever_data_frame[1]
+    # Extracting the amount of people without covid and have cough
+    negative_corona_fever_data_frame = data_frame[data_frame[RESULT] == NEGATIVE].groupby('fever')['fever'].count()
+    negative_with_fever = negative_corona_fever_data_frame[1]
+
+    print("Number of positive people:", NUMBER_OF_POSITIVE_WHO_TESTED, "Number of negative people:",
+          NUMBER_OF_NEGATIVE_WHO_TESTED)
+    print("Positive to Covid people with fever:", positive_with_fever, "Negative to Covid people with fever:",
+          negative_with_fever)
+    # Calculating the percentage of cough as indicator
+    fever_as_indicator_in_positive_covid = ((positive_with_fever / NUMBER_OF_POSITIVE_WHO_TESTED) * 100)
+    print("Percentage of people with fever who diagnosed with Covid-19")
+    print("%.2f" % fever_as_indicator_in_positive_covid + " %")
+    fever_as_indicator_in_negative_covid = ((negative_with_fever / NUMBER_OF_NEGATIVE_WHO_TESTED) * 100)
+    print("Percentage of people with fever who NOT diagnosed with Covid-19")
+    print("%.2f" % fever_as_indicator_in_negative_covid + " %")
+
+    if fever_as_indicator_in_positive_covid > 70.0 and fever_as_indicator_in_negative_covid <= 30.0:
+        print("Fever by itself is a good indicator for having COVID-19")
+    else:
+        print("Fever by itself is not a good indicator for having COVID-19")
+
+
+fever_as_indicator()
