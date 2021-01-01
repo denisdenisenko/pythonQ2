@@ -16,6 +16,9 @@ RESULT = 'corona_result'
 
 # print(number_of_positive_who_tested)
 
+# print(data_frame.groupby(RESULT).count())
+
+
 # # Number of people without cough
 # positive_without = (len(data_frame.groupby(['cough']).groups[0]))
 # # Number of people with cough
@@ -46,7 +49,6 @@ def negative_corona_per_cough():
 
 
 def cough_as_indicator():
-    print(data_frame.groupby(RESULT).count())
     # Gives a number of positive to COVID individuals
     number_of_positive_who_tested = data_frame[data_frame[RESULT] == POSITIVE].shape[0]
     number_of_negative_who_tested = data_frame[data_frame[RESULT] == NEGATIVE].shape[0]
@@ -58,16 +60,22 @@ def cough_as_indicator():
     negative_corona_cough_data_frame = data_frame[data_frame[RESULT] == NEGATIVE].groupby('cough')['cough'].count()
     negative_with_cough = negative_corona_cough_data_frame[1]
 
-
-
+    print("Number of positive people:", number_of_positive_who_tested, "Number of negative people:",
+          number_of_negative_who_tested)
+    print("Positive to Covid people with cough:", positive_with_cough, "Negative to Covid people with cough:",
+          negative_with_cough)
+    # Calculating the percentage of cough as indicator
     cough_as_indicator_in_positive_covid = ((positive_with_cough / number_of_positive_who_tested) * 100)
+    print("Percentage of people with cough who diagnosed with Covid-19")
     print("%.2f" % cough_as_indicator_in_positive_covid + " %")
     cough_as_indicator_in_negative_covid = ((negative_with_cough / number_of_negative_who_tested) * 100)
-    print("%.2f" % cough_as_indicator_in_negative_covid + " %" )
-    print(positive_with_cough, negative_with_cough)
-    print(number_of_positive_who_tested, number_of_negative_who_tested)
+    print("Percentage of people with cough who NOT diagnosed with Covid-19")
+    print("%.2f" % cough_as_indicator_in_negative_covid + " %")
+
+    if cough_as_indicator_in_positive_covid > 70.0 and cough_as_indicator_in_negative_covid <= 30.0:
+        print("Cough is a good indicator for COVID-19")
+    else:
+        print("Cough is not a good indicator for COVID-19")
 
 
-positive_corona_per_cough()
-negative_corona_per_cough()
 cough_as_indicator()
