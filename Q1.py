@@ -57,6 +57,7 @@ def adding_average_of_programming():
     return data_frame
 
 
+# Updating the data_frame after adding colum
 data_frame = adding_average_of_programming()
 
 
@@ -80,6 +81,7 @@ def adding_average_of_physics_and_math():
     return data_frame
 
 
+# Updating the data_frame after adding colum
 data_frame = adding_average_of_physics_and_math()
 
 
@@ -92,6 +94,7 @@ def adding_average_grade_70_30():
     return data_frame
 
 
+# Updating the data_frame after adding colum
 data_frame = adding_average_grade_70_30()
 
 
@@ -131,6 +134,7 @@ def adding_averages_of_all_students():
     return data_frame
 
 
+# Updating the data_frame after adding colum
 data_frame = adding_averages_of_all_students()
 
 
