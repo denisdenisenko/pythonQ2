@@ -22,20 +22,20 @@ def print_all_averages():
     :return:
     """
     print("This is an average score by courses")
-    print("- -" * 50)
+    print("- -" * 30)
     print("The mean of JAVA is : ", data_frame[JAVA].mean())
     print("The mean of Python is : ", data_frame[PYTHON].mean())
     print("The mean of Physics is : ", data_frame[PHYSICS].mean())
     print("The mean of Math is : ", data_frame[MATH].mean())
 
 
-def print_all_maximum_gades():
+def print_all_maximum_grades():
     """
     printing all subjects maximum score
     :return:
     """
     print("This is an maximum score by courses")
-    print("- -" * 50)
+    print("- -" * 30)
     print("The maximum grade of JAVA is : ", data_frame[JAVA].max())
     print("The maximum grade of Python is : ", data_frame[PYTHON].max())
     print("The maximum grade of Physics is : ", data_frame[PHYSICS].max())
@@ -49,7 +49,7 @@ def print_all_id_failed_java():
     """
     failed_java_exam = data_frame.Java <= 59
     print("The ID's who failed Java exam")
-    print("- -" * 50)
+    print("- -" * 30)
     print(data_frame[ID][failed_java_exam])
 
 
@@ -74,7 +74,7 @@ def print_id_with_best_programming_average():
     average_programming = (data_frame.AvgProgramming == data_frame.AvgProgramming.max())
 
     print("The ID's who has best programming average ")
-    print("- -" * 50)
+    print("- -" * 30)
     print(data_frame[ID][average_programming])
 
 
@@ -112,7 +112,7 @@ def print_sorted_data_frame():
     :return:
     """
     print("This is a sorted average data frame by 70/30 rule ")
-    print("- -" * 50)
+    print("- -" * 30)
     print(data_frame.sort_values(by=[AVERAGE_PROG_PSYMATH], ascending=False))
 
 
@@ -122,7 +122,7 @@ def print_java_math_grade():
     :return:
     """
     print("The ID's who got 80 + at Java and 70 - at Math")
-    print("- -" * 50)
+    print("- -" * 30)
     print(data_frame.loc[(data_frame[JAVA] >= 80) & (data_frame[MATH] <= 70), [ID]])
 
 
@@ -155,7 +155,7 @@ def printing_averages_of_all_students():
     :return:
     """
     print("The average grades are:")
-    print("- -" * 50)
+    print("- -" * 30)
     print(data_frame[[ID, AVERAGE_GRADE]])
 
 
@@ -165,7 +165,7 @@ def printing_average_by_region():
     :return:
     """
     print("The averages by regions are: ")
-    print("- -" * 50)
+    print("- -" * 30)
     print(data_frame.groupby(REGION)[AVERAGE_GRADE].mean())
 
 
@@ -175,38 +175,37 @@ def printing_average_by_gender():
     :return:
     """
     print("The averages by gender are: ")
-    print("- -" * 50)
+    print("- -" * 30)
     print(data_frame.groupby(GENDER)[AVERAGE_GRADE].mean())
     gender_dataframe = data_frame.groupby(GENDER)[AVERAGE_GRADE].mean()
-    print("- -" * 50)
-    print("{} has the better average, ant its {} ".format(gender_dataframe.index.values[0],gender_dataframe.index.values[0], sep='\n'))
-    print(gender_dataframe)
+    print("- -" * 30)
+    print("{} has the better average, and its {} ".format(gender_dataframe.index.values[0], gender_dataframe.iloc[0],
+                                                          sep='\n'))
 
 
 print(data_frame)
-print("- -" * 50)
+print("- -" * 30)
 print_all_averages()
-print("- -" * 50)
-print_all_maximum_gades()
-print("- -" * 50)
+print("- -" * 30)
+print_all_maximum_grades()
+print("- -" * 30)
 print_all_id_failed_java()
 adding_average_of_programming()
-print("- -" * 50)
+print("- -" * 30)
 print_id_with_best_programming_average()
 adding_average_of_physics_and_math()
 adding_average_grade_70_30()
-print("- -" * 50)
+print("- -" * 30)
 print_sorted_data_frame()
-print("- -" * 50)
+print("- -" * 30)
 print_java_math_grade()
-print("- -" * 50)
+print("- -" * 30)
 print_the_average_of_all_classes()
 adding_averages_of_all_students()
-print("- -" * 50)
+print("- -" * 30)
 printing_averages_of_all_students()
-print("- -" * 50)
+print("- -" * 30)
 printing_average_by_region()
-print("- -" * 50)
+print("- -" * 30)
 printing_average_by_gender()
-print("- -" * 50)
-
+print("- -" * 30)
