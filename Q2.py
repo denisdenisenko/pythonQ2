@@ -1,11 +1,6 @@
 import pandas as pd
-import ipywidgets as widgets
-from IPython import display
-from IPython.display import display, HTML
-from pip._internal.utils.misc import tabulate
-import matplotlib.pyplot as plt
 
-data_frame = pd.read_csv("./corona_tested_individuals_short.csv")
+data_frame = pd.read_csv("./corona_tested_individuals_dec_2020.csv")
 POSITIVE = 'חיובי'
 NEGATIVE = 'שלילי'
 RESULT = 'corona_result'
@@ -70,17 +65,17 @@ def cough_as_indicator():
     negative_corona_cough_data_frame = data_frame[data_frame[RESULT] == NEGATIVE].groupby('cough')['cough'].count()
     negative_with_cough = negative_corona_cough_data_frame[1]
 
-    print("Number of positive people:", number_of_positive_who_tested, "Number of negative people:",
-          number_of_negative_who_tested)
+    print("Number of positive people:", NUMBER_OF_POSITIVE_WHO_TESTED, "Number of negative people:",
+          NUMBER_OF_NEGATIVE_WHO_TESTED)
     print("Positive to Covid people with cough:", positive_with_cough, "Negative to Covid people with cough:",
           negative_with_cough)
     print("-" * 75)
 
     # Calculating the percentage of cough as indicator
-    cough_as_indicator_in_positive_covid = ((positive_with_cough / number_of_positive_who_tested) * 100)
+    cough_as_indicator_in_positive_covid = ((positive_with_cough / NUMBER_OF_POSITIVE_WHO_TESTED) * 100)
     print("Percentage of people with cough who diagnosed with Covid-19")
     print("%.2f" % cough_as_indicator_in_positive_covid + " %")
-    cough_as_indicator_in_negative_covid = ((negative_with_cough / number_of_negative_who_tested) * 100)
+    cough_as_indicator_in_negative_covid = ((negative_with_cough / NUMBER_OF_NEGATIVE_WHO_TESTED) * 100)
     print("Percentage of people with cough who NOT diagnosed with Covid-19")
     print("%.2f" % cough_as_indicator_in_negative_covid + " %")
     print("-" * 75)
@@ -90,7 +85,7 @@ def cough_as_indicator():
         print("-" * 75)
 
     else:
-        print("Cough by itself not a good indicator to say  if someone having a COVID-19")
+        print("Cough by itself not a good indicator to say if someone having a COVID-19")
         print("-" * 75)
 
 
@@ -306,7 +301,6 @@ def printing_number_of_sick_and_healthy_by_gender():
     print("-" * 75)
 
 
-
 def printing_number_of_sick_and_healthy_by_age():
     print('\n Q6 - Number of sick by age \n')
 
@@ -324,11 +318,25 @@ def printing_number_of_sick_and_healthy_by_age():
     print("-" * 75)
 
 
-
-
 def printing_data_by_gender_age_result():
-    widget1 = widgets.Output()
-    data_by_groups = data_frame[data_frame[RESULT] == POSITIVE].groupby(['gender','age_60_and_above',RESULT]).count()
+    data_by_groups = data_frame[data_frame[RESULT] == POSITIVE].groupby(['gender', 'age_60_and_above']).sum()
+    pd.set_option('display.max_columns', None)
+    data_by_groups.to_csv("1.csv")
+    print(data_by_groups)
+    print("-" * 75)
+
+    data_by_groups.plot.hist()
+    data_by_groups = data_frame[data_frame[RESULT] == NEGATIVE].groupby(['gender', 'age_60_and_above']).sum()
+    pd.set_option('display.max_columns', None)
+    data_by_groups.to_csv("2.csv")
+    print(data_by_groups)
+    print("-" * 75)
 
 
+
+cough_as_indicator()
+fever_as_indicator()
+shortness_of_breath_as_indicator()
+sore_throat_as_indicator()
+head_ache_as_indicator()
 printing_data_by_gender_age_result()
