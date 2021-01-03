@@ -4,9 +4,11 @@ data_frame = pd.read_csv("./corona_tested_individuals_dec_2020.csv")
 POSITIVE = 'חיובי'
 NEGATIVE = 'שלילי'
 RESULT = 'corona_result'
+# Translate hebrew words to english
+data_frame['gender'] = data_frame['gender'].replace(['זכר'], 'male')
+data_frame['gender'] = data_frame['gender'].replace(['נקבה'], 'female')
 
 # Gives a number of  and negative to COVID individuals
-
 NUMBER_OF_POSITIVE_WHO_TESTED = data_frame[data_frame[RESULT] == POSITIVE].shape[0]
 NUMBER_OF_NEGATIVE_WHO_TESTED = data_frame[data_frame[RESULT] == NEGATIVE].shape[0]
 
@@ -336,7 +338,7 @@ def printing_number_of_sick_and_healthy_by_age():
     print(number_of_sick_by_age)
     print("-" * 105)
 
-    # Extracting the amount of people without covid and have fever
+    # Extracting the amount of people without covid and by age
     number_of_healthy_by_age = data_frame[data_frame[RESULT] == NEGATIVE].groupby('age_60_and_above')[
         'age_60_and_above'].count()
     print("Healthy by age")
@@ -345,12 +347,18 @@ def printing_number_of_sick_and_healthy_by_age():
 
 
 def printing_data_by_gender_age_result():
+    print("-" * 105)
+    print("This is a data information about people who positive to Covid-19")
+    print("-" * 105)
     data_by_groups = data_frame[data_frame[RESULT] == POSITIVE].groupby(['gender', 'age_60_and_above']).sum()
     pd.set_option('display.max_columns', None)
-    data_by_groups.to_csv("1.csv")
+    # data_by_groups.to_csv("1.csv")
     print(data_by_groups)
+    # ff = pd.read_csv("1.csv")
+    # print(ff)
     print("-" * 105)
-
+    print("This is a data information about people who negative to Covid-19")
+    print("-" * 105)
     data_by_groups.plot.hist()
     data_by_groups = data_frame[data_frame[RESULT] == NEGATIVE].groupby(['gender', 'age_60_and_above']).sum()
     pd.set_option('display.max_columns', None)
