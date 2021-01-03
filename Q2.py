@@ -18,6 +18,8 @@ def positive_corona_per_cough():
     printing the number of positive to Covid - 19 people with/without cough
     :return:
     """
+    print('\n Q1 - People with Covid and cough \n')
+    print("-" * 105)
     print("Number of positive to Covid-19 people by cough")
     print(data_frame[data_frame[RESULT] == POSITIVE].groupby('cough')['cough'].count())
     print("-" * 105)
@@ -28,6 +30,8 @@ def negative_corona_per_cough():
     printing the number of negative to Covid - 19 people with/without cough
     :return:
     """
+    print('\n Q2 - People without Covid and cough \n')
+    print("-" * 105)
     print("Number of negative to Covid-19 people by cough")
     print(data_frame[data_frame[RESULT] == NEGATIVE].groupby('cough')['cough'].count())
     print("-" * 105)
@@ -39,7 +43,7 @@ def cough_as_indicator():
     say that someone has Covid-19
     :return:
     """
-    print('\n  - Cough as indicator -  \n')
+    print('\n  Q3 - Cough as indicator -  \n')
 
     # Extracting the amount of people with covid and have cough
     positive_corona_cough_data_frame = data_frame[data_frame[RESULT] == POSITIVE].groupby('cough')['cough'].count()
@@ -132,18 +136,31 @@ def fever_as_indicator():
 
 
 def positive_corona_per_sore_throat():
+    """
+    printing the number of positive to Covid - 19 people with/without sore throat
+    :return:
+    """
     print("Number of positive to Covid-19 people by Sore Throat")
     print(data_frame[data_frame[RESULT] == POSITIVE].groupby('sore_throat')['sore_throat'].count())
     print("-" * 105)
 
 
 def negative_corona_per_sore_throat():
+    """
+    printing the number of negative to Covid - 19 people with/without sore throat
+    :return:
+    """
     print("Number of negative to Covid-19 people by Sore Throat")
     print(data_frame[data_frame[RESULT] == NEGATIVE].groupby('sore_throat')['sore_throat'].count())
     print("-" * 105)
 
 
 def sore_throat_as_indicator():
+    """
+    this function calculates if sore throat by itself is enough to
+    say that someone has Covid-19
+    :return:
+    """
     print('\n - Sore Throat as indicator -  \n')
 
     # Extracting the amount of people with covid and have sore throat
@@ -181,18 +198,31 @@ def sore_throat_as_indicator():
 
 
 def positive_corona_per_shortness_of_breath():
+    """
+    printing the number of positive to Covid - 19 people with/without shortness of breath
+    :return:
+    """
     print("Number of positive to Covid-19 people by Shortness of breath")
     print(data_frame[data_frame[RESULT] == POSITIVE].groupby('shortness_of_breath')['shortness_of_breath'].count())
     print("-" * 105)
 
 
 def negative_corona_per_shortness_of_breath():
+    """
+    printing the number of negative to Covid - 19 people with/without shortness of breath
+    :return:
+    """
     print("Number of negative to Covid-19 people by Shortness of breath")
     print(data_frame[data_frame[RESULT] == NEGATIVE].groupby('shortness_of_breath')['shortness_of_breath'].count())
     print("-" * 105)
 
 
 def shortness_of_breath_as_indicator():
+    """
+    this function calculates if shortness of breath by itself is enough to
+    say that someone has Covid-19
+    :return:
+    """
     print('\n - Shortness of breath as indicator -  \n')
 
     # Extracting the amount of people with covid and have shortness of breath
@@ -233,18 +263,31 @@ def shortness_of_breath_as_indicator():
 
 
 def positive_corona_per_head_ache():
+    """
+    printing the number of positive to Covid - 19 people with/without head ache
+    :return:
+    """
     print("Number of positive to Covid-19 people by Head ache")
     print(data_frame[data_frame[RESULT] == POSITIVE].groupby('head_ache')['head_ache'].count())
     print("-" * 105)
 
 
 def negative_corona_per_head_ache():
+    """
+    printing the number of negative to Covid - 19 people with/without head ache
+    :return:
+    """
     print("Number of negative to Covid-19 people by Head ache")
     print(data_frame[data_frame[RESULT] == NEGATIVE].groupby('head_ache')['head_ache'].count())
     print("-" * 105)
 
 
 def head_ache_as_indicator():
+    """
+    this function calculates if head ache by itself is enough to
+    say that someone has Covid-19
+    :return:
+    """
     print('\n - Head ache as indicator -  \n')
 
     # Extracting the amount of people with covid and have head ache
@@ -284,23 +327,31 @@ def head_ache_as_indicator():
 
 
 def printing_number_of_sick_and_healthy_by_gender():
+    """
+    printing the number of sick an healthy people distributed by gender
+    :return:
+    """
     print('\n Q5 - Number of sick by gender \n')
 
-    print("Sick by gender")
+    print("Sick by gender\n")
     number_of_sick_by_gender = data_frame[data_frame[RESULT] == POSITIVE].groupby('gender')['gender'].count()
     print(number_of_sick_by_gender)
     print("-" * 105)
 
     number_of_healthy_by_gender = data_frame[data_frame[RESULT] == NEGATIVE].groupby('gender')['gender'].count()
-    print("Healthy by gender")
+    print("Healthy by gender\n")
     print(number_of_healthy_by_gender)
     print("-" * 105)
 
 
 def printing_number_of_sick_and_healthy_by_age():
+    """
+    printing the number of sick an healthy people distributed by age
+    :return:
+    """
     print('\n Q6 - Number of sick by age \n')
 
-    print("Sick by age")
+    print("Sick by age \n")
     number_of_sick_by_age = data_frame[data_frame[RESULT] == POSITIVE].groupby('age_60_and_above')[
         'age_60_and_above'].count()
     print(number_of_sick_by_age)
@@ -309,13 +360,13 @@ def printing_number_of_sick_and_healthy_by_age():
     # Extracting the amount of people without covid and by age
     number_of_healthy_by_age = data_frame[data_frame[RESULT] == NEGATIVE].groupby('age_60_and_above')[
         'age_60_and_above'].count()
-    print("Healthy by age")
+    print("Healthy by age\n")
     print(number_of_healthy_by_age)
-    print("-" * 105)
 
 
 def printing_data_by_gender_age_result():
     print("-" * 105)
+    print('\n Q7 - Data by groups \n')
     print("This is a data information about people who positive to Covid-19")
     print("-" * 105)
     data_by_groups = data_frame[data_frame[RESULT] == POSITIVE].groupby(['gender', 'age_60_and_above']).sum()
@@ -349,4 +400,6 @@ sore_throat_as_indicator()
 positive_corona_per_head_ache()
 negative_corona_per_head_ache()
 head_ache_as_indicator()
+printing_number_of_sick_and_healthy_by_gender()
+printing_number_of_sick_and_healthy_by_age()
 printing_data_by_gender_age_result()
