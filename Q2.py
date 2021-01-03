@@ -365,6 +365,11 @@ def printing_number_of_sick_and_healthy_by_age():
 
 
 def printing_data_by_gender_age_result():
+    """
+    printing information about the symptoms of Covid-19 by
+    following groups (gender, age)
+    :return:
+    """
     print("-" * 105)
     print('\n Q7 - Data by groups \n')
     print("This is a data information about people who positive to Covid-19")
