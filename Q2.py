@@ -8,41 +8,9 @@ RESULT = 'corona_result'
 data_frame['gender'] = data_frame['gender'].replace(['זכר'], 'male')
 data_frame['gender'] = data_frame['gender'].replace(['נקבה'], 'female')
 
-# Gives a number of  and negative to COVID individuals
+# Gives a number of positive and negative to COVID individuals
 NUMBER_OF_POSITIVE_WHO_TESTED = data_frame[data_frame[RESULT] == POSITIVE].shape[0]
 NUMBER_OF_NEGATIVE_WHO_TESTED = data_frame[data_frame[RESULT] == NEGATIVE].shape[0]
-
-
-# --------------Maybe usefull for further research ----
-
-# print(data_frame['cough'].value_counts())
-# print(data_frame[['cough','corona_result']])
-# print(data_frame.groupby('cough')[RESULT].count())
-# print(data_frame.groupby('cough')[RESULT].count())
-
-
-# print(number_of_positive_who_tested)
-
-# print(data_frame.groupby(RESULT).count())
-
-
-# # Number of people without cough
-# positive_without = (len(data_frame.groupby(['cough']).groups[0]))
-# # Number of people with cough
-# positive_with = (len(data_frame.groupby(['cough']).groups[1]))
-#
-# # Number of people without cough
-# negative_without = (len(data_frame.groupby(['cough']).groups[0]))
-# # Number of people with cough
-# negative_with = (len(data_frame.groupby(['cough']).groups[1]))
-#
-# # Number of people without cough
-# tested_with_cough = (len(data_frame.groupby(['cough']).groups[0]))
-# # Number of people with cough
-# tested_without_cough = (len(data_frame.groupby(['cough']).groups[1]))
-
-
-# -------------------------------------------------------
 
 
 def positive_corona_per_cough():
@@ -354,15 +322,14 @@ def printing_data_by_gender_age_result():
     pd.set_option('display.max_columns', None)
     # data_by_groups.to_csv("1.csv")
     print(data_by_groups)
-    # ff = pd.read_csv("1.csv")
-    # print(ff)
+
     print("-" * 105)
     print("This is a data information about people who negative to Covid-19")
     print("-" * 105)
     data_by_groups.plot.hist()
     data_by_groups = data_frame[data_frame[RESULT] == NEGATIVE].groupby(['gender', 'age_60_and_above']).sum()
-    pd.set_option('display.max_columns', None)
-    data_by_groups.to_csv("2.csv")
+    # pd.set_option('display.max_columns', None)
+    # data_by_groups.to_csv("2.csv")
     print(data_by_groups)
     print("-" * 105)
 

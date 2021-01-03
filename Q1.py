@@ -23,10 +23,10 @@ def print_all_averages():
     """
     print("This is an average score by courses")
     print("- -" * 30)
-    print("The mean of JAVA is : ", data_frame[JAVA].mean())
-    print("The mean of Python is : ", data_frame[PYTHON].mean())
-    print("The mean of Physics is : ", data_frame[PHYSICS].mean())
-    print("The mean of Math is : ", data_frame[MATH].mean())
+    print("The mean of JAVA is : ", "%.2f" % data_frame[JAVA].mean())
+    print("The mean of Python is : ", "%.2f" % data_frame[PYTHON].mean())
+    print("The mean of Physics is : ", "%.2f" % data_frame[PHYSICS].mean())
+    print("The mean of Math is : ", "%.2f" % data_frame[MATH].mean())
 
 
 def print_all_maximum_grades():
@@ -36,10 +36,10 @@ def print_all_maximum_grades():
     """
     print("This is an maximum score by courses")
     print("- -" * 30)
-    print("The maximum grade of JAVA is : ", data_frame[JAVA].max())
-    print("The maximum grade of Python is : ", data_frame[PYTHON].max())
-    print("The maximum grade of Physics is : ", data_frame[PHYSICS].max())
-    print("The maximum grade of Math is : ", data_frame[MATH].max())
+    print("The maximum grade of JAVA is : ", "%.2f" % data_frame[JAVA].max())
+    print("The maximum grade of Python is : ", "%.2f" % data_frame[PYTHON].max())
+    print("The maximum grade of Physics is : ", "%.2f" % data_frame[PHYSICS].max())
+    print("The maximum grade of Math is : ", "%.2f" % data_frame[MATH].max())
 
 
 def print_all_id_failed_java():
